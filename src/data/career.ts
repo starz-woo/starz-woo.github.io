@@ -9,11 +9,11 @@ export type Career = {
 export const careers: Career[] = [
   {
     company: "사운드마인드",
-    role: "MX팀 매니저",
+    role: "Full-Stack 개발",
     period: "2025.02 - 현재",
     description:
-      "Android Application 개발 및 MX팀 매니저로서 프론트엔드와 백엔드를 아우르는 풀스택 개발을 담당하고 있습니다.",
-    stack: ["React", "Next.js", "Android", "Docker", "Spring Boot"],
+      "React Native 기반 크로스 플랫폼 애플리케이션 개발 및 프론트엔드와 백엔드를 아우르는 풀스택 개발을 담당하고 있습니다.",
+    stack: ["React", "Next.js", "React Native", "Docker", "Spring Boot"],
   },
   {
     company: "네오젠소프트",

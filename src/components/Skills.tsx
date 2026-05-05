@@ -3,12 +3,7 @@ import { Section } from "./Section";
 
 export function Skills() {
   return (
-    <Section
-      id="skills"
-      label="03 / Skills"
-      title="다룰 수 있는 도구와 기술들."
-      description="실무 프로젝트에서 사용해 온 언어·프레임워크·인프라 도구들을 분야별로 정리했습니다."
-    >
+    <Section id="skills" label="03 / Skills" title="다뤄본 도구와 기술">
       <ul className="space-y-8">
         {skills.map((row) => (
           <li

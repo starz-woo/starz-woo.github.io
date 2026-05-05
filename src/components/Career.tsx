@@ -4,11 +4,7 @@ import { Tag } from "./Tag";
 
 export function Career() {
   return (
-    <Section
-      id="career"
-      label="02 / Career"
-      title="실무에서 쌓아온 경험들."
-    >
+    <Section id="career" label="02 / Career" title="실무에서 쌓아온 경험">
       <ul className="space-y-10">
         {careers.map((c) => (
           <li

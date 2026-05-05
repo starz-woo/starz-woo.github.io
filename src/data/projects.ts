@@ -22,7 +22,7 @@ export const workProjects: Project[] = [
     title: "Soundmind 통합 회원 시스템",
     subtitle: "B2B",
     period: "2025 - 현재",
-    role: "MX",
+    role: "Full-Stack 개발",
     description:
       "자사 제품군 공통 회원 관리 시스템. 오디야, 레디투스쿨, 모하니 서비스 연동 — 추후 서비스 추가 예정",
     stack: ["Node.js", "Authentication", "OAuth"],
@@ -30,7 +30,8 @@ export const workProjects: Project[] = [
       "다수 서비스 통합 인증",
       "세션 관리 및 토큰 정책 설계",
       "부모 - 자녀 연동 관리",
-      "통합 관리 대시보드 제작",
+      "통합 관리 대시보드 제작 (회원 관리 · 앱 별 기능 제어)",
+      "Prometheus / Grafana / Loki 연동으로 메트릭 및 로그 관제",
     ],
     image: "/projects/soundmind.png",
   },
@@ -38,7 +39,7 @@ export const workProjects: Project[] = [
     title: "오디야",
     subtitle: "위치 기반 케어 서비스 · B2B",
     period: "2025 - 현재",
-    role: "MX",
+    role: "Full-Stack 개발",
     description:
       "자녀/부모를 위한 위치 기반 안전 모니터링 및 커뮤니케이션 앱 (Full / Light 버전)",
     stack: ["React Native", "Next.js", "Node.js", "Firebase"],
@@ -53,7 +54,7 @@ export const workProjects: Project[] = [
     title: "레디투스쿨",
     subtitle: "학교 생활 도우미 · B2B",
     period: "2025 - 현재",
-    role: "MX",
+    role: "Full-Stack 개발",
     description:
       "아이들의 등교 준비 루틴을 도와주는 부모/자녀용 모바일 앱. Expo 기반으로 재구축",
     stack: ["React Native", "Expo", "TypeScript", "Zustand", "React Query"],
@@ -68,7 +69,7 @@ export const workProjects: Project[] = [
     title: "모하니",
     subtitle: "스마트폰 관리 서비스 · B2B",
     period: "2026 - 현재",
-    role: "MX",
+    role: "Full-Stack 개발",
     description:
       "어린이 전용 스마트폰 관리 서비스. 앱 차단/허용, 스케줄링, 관리자 어드민을 제공",
     stack: ["Node.js", "Admin Dashboard", "App Block"],
@@ -99,7 +100,7 @@ export const workProjects: Project[] = [
     title: "Audio Detect",
     subtitle: "오디오 이벤트 감지 · Assignment",
     period: "2026 - 현재",
-    role: "Backend 개발",
+    role: "Full-Stack 개발",
     description:
       "실시간 오디오 녹음 및 이벤트 감지 서버. 업로드된 오디오를 분석해 이벤트를 검출",
     stack: ["Python", "Audio Processing", "REST API"],

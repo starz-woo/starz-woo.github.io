@@ -1,5 +1,12 @@
-import { ArrowDown, ArrowUpRight, Github, Globe, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
 import { profile } from "@/data/profile";
+
+const facts: { label: string; value: string }[] = [
+  { label: "Now", value: "Soundmind · Full-Stack" },
+  { label: "Focus", value: "AI · Product · React Native" },
+  { label: "Recent", value: "ACL '26 · TRAE '26 · Snowflake '26" },
+  { label: "Based", value: "Seoul, KR" },
+];
 
 export function Hero() {
   return (
@@ -7,56 +14,89 @@ export function Hero() {
       id="top"
       className="relative flex min-h-[92vh] items-center overflow-hidden"
     >
-      {/* background dot grid */}
       <div
         aria-hidden
         className="hero-grid pointer-events-none absolute inset-0 -z-10"
       />
-      {/* soft gradient wash */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[60vh] bg-gradient-to-b from-[var(--color-surface)] via-white/40 to-transparent"
       />
 
-      <div className="mx-auto w-full max-w-5xl px-6 py-24 md:py-32">
-        <p
-          className="animate-fade-up mb-8 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-[var(--color-ink-subtle)]"
+      <div className="mx-auto w-full max-w-5xl px-6 pt-28 pb-24 md:pt-32 md:pb-28">
+        {/* top meta bar */}
+        <div
+          className="animate-fade-up mb-14 flex flex-wrap items-center justify-between gap-3 text-[11px] font-medium uppercase tracking-[0.24em] text-[var(--color-ink-subtle)] md:mb-16"
           style={{ animationDelay: "0.05s" }}
         >
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--color-ink)] animate-blink" />
-          Portfolio · 2026 · Available for new opportunities
-        </p>
+          <span className="font-mono normal-case tracking-normal text-[var(--color-ink-muted)]">
+            {profile.name} · Portfolio / 2026
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 animate-blink" />
+            Open to new roles
+          </span>
+        </div>
 
-        <h1 className="text-5xl font-semibold leading-[1.05] tracking-tight md:text-7xl lg:text-[5.5rem]">
+        {/* headline — full width */}
+        <h1 className="text-[2.5rem] font-semibold leading-[1.05] tracking-tight md:text-[4rem] lg:text-[4.75rem]">
           <span
             className="animate-fade-up block"
             style={{ animationDelay: "0.15s" }}
           >
-            안녕하세요,
+            AI 프로덕트를 만드는
           </span>
           <span
-            className="animate-fade-up mt-2 block"
-            style={{ animationDelay: "0.3s" }}
+            className="animate-fade-up mt-1 block font-normal italic text-[var(--color-ink-muted)] md:mt-2"
+            style={{
+              animationDelay: "0.3s",
+              fontFamily: "ui-serif, Georgia, serif",
+            }}
           >
-            <span className="text-shimmer">{profile.name}</span>{" "}
-            <span className="text-[var(--color-ink-subtle)]">/</span>{" "}
+            Full-Stack Engineer,
+          </span>
+          <span
+            className="animate-fade-up mt-1 block md:mt-2"
+            style={{ animationDelay: "0.45s" }}
+          >
+            조현우{" "}
+            <span className="text-[var(--color-ink-subtle)]">· David Cho</span>
             <span className="font-normal text-[var(--color-ink-muted)]">
-              {profile.role}
+              {" "}
+              입니다.
             </span>
-            <span className="text-[var(--color-ink)]">입니다.</span>
           </span>
         </h1>
 
+        {/* tagline */}
         <p
           className="animate-fade-up mt-10 max-w-2xl text-base leading-relaxed text-[var(--color-ink-muted)] md:text-lg"
-          style={{ animationDelay: "0.5s" }}
+          style={{ animationDelay: "0.6s" }}
         >
           {profile.tagline}
         </p>
 
+        {/* facts row */}
+        <dl
+          className="animate-fade-up mt-12 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-[var(--color-line)] pt-8 md:grid-cols-4"
+          style={{ animationDelay: "0.7s" }}
+        >
+          {facts.map((f) => (
+            <div key={f.label}>
+              <dt className="text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-ink-subtle)]">
+                {f.label}
+              </dt>
+              <dd className="mt-1.5 text-sm leading-snug text-[var(--color-ink)]">
+                {f.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        {/* CTAs */}
         <div
           className="animate-fade-up mt-12 flex flex-wrap items-center gap-3"
-          style={{ animationDelay: "0.7s" }}
+          style={{ animationDelay: "0.85s" }}
         >
           <a
             href={`mailto:${profile.email}`}
@@ -74,6 +114,7 @@ export function Hero() {
             이력서 PDF
             <ArrowUpRight size={14} />
           </a>
+          <span className="mx-1 hidden h-5 w-px bg-[var(--color-line)] md:inline-block" />
           <a
             href={profile.links.github}
             target="_blank"
@@ -97,10 +138,9 @@ export function Hero() {
             target="_blank"
             rel="noreferrer"
             className="inline-flex h-10 items-center gap-2 rounded-full border border-[var(--color-line)] bg-white px-4 text-sm font-medium text-[var(--color-ink-muted)] transition-all hover:text-[var(--color-ink)] hover:-translate-y-0.5"
-            aria-label="WIGTN"
           >
-            <Globe size={14} />
             wigtn.com
+            <ArrowUpRight size={12} />
           </a>
         </div>
       </div>

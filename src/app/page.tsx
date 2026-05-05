@@ -1,4 +1,5 @@
 import { About } from "@/components/About";
+import { Awards } from "@/components/Awards";
 import { Career } from "@/components/Career";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
@@ -17,24 +18,24 @@ export default function HomePage() {
         <About />
         <Career />
         <Skills />
+        <Awards />
         <ProjectsSection
           id="work"
-          label="04 / Work Projects"
-          title="Soundmind"
-          description="MX팀에서 풀스택으로 참여하고 있는 B2B / Assignment 프로젝트입니다."
+          label="05 / Work Projects"
+          title="Soundmind에서의 작업물"
           projects={workProjects}
+          defaultExpanded
         />
         <ProjectsSection
           id="ai"
-          label="05 / AI Projects"
-          title="WIGTN"
-          description="OpenAI Realtime, Gemini Live, Claude Code 등 최신 AI 모델을 프로덕션 수준에서 다룬 7개 프로젝트입니다."
+          label="06 / AI Projects"
+          title="WIGTN 팀으로 만든 AI 프로젝트"
           projects={aiProjects}
         />
         <ProjectsSection
           id="side"
-          label="06 / Side Projects"
-          title="개인·팀 단위로 진행한 사이드 프로젝트들."
+          label="07 / Side Projects"
+          title="개인·팀 단위 사이드 프로젝트"
           projects={sideProjects}
         />
         <Contact />
