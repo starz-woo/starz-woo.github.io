@@ -7,6 +7,13 @@ export type Award = {
 
 export const awards: Award[] = [
   {
+    title: "논문 채택",
+    org: "ACL 2026 System Demonstrations",
+    date: "2026",
+    description:
+      "WIGVO: Real-Time Bidirectional Speech Translation over Legacy PSTN Calls via Dual-Session Echo Gating",
+  },
+  {
     title: "대상",
     org: "Build with TRAE Seoul Hackathon 2026",
     date: "2026",

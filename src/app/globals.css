@@ -76,6 +76,21 @@ a {
   100% { background-position: 200% 0; }
 }
 
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-modal-in {
+  animation: modal-in 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 .animate-fade-up {
   animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -128,7 +143,148 @@ a {
   .animate-fade-in,
   .animate-blink,
   .animate-scroll-hint,
+  .animate-modal-in,
   .text-shimmer {
     animation: none;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 10pt !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* hide site chrome */
+  header.sticky,
+  .hero-grid,
+  [aria-label="아래로 스크롤"],
+  [role="dialog"],
+  button[aria-label*="자세히"] [aria-hidden]:last-child {
+    display: none !important;
+  }
+
+  /* kill all animations */
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .animate-fade-up,
+  .animate-fade-in,
+  .animate-blink,
+  .animate-scroll-hint,
+  .animate-modal-in,
+  .text-shimmer {
+    opacity: 1 !important;
+    transform: none !important;
+    color: inherit !important;
+    -webkit-text-fill-color: inherit !important;
+    background: none !important;
+  }
+
+  /* compact main container */
+  main {
+    max-width: 100% !important;
+  }
+
+  /* hero — minimal wrapper, print-only inner block handles layout */
+  section#top {
+    min-height: 0 !important;
+    padding: 0 0 4mm 0 !important;
+    margin: 0 !important;
+    page-break-after: auto;
+  }
+
+  /* general sections — tighter padding */
+  section {
+    padding: 4mm 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    page-break-inside: auto;
+  }
+  section > div {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* section headings */
+  section h2 {
+    font-size: 13pt !important;
+    margin: 0 0 3mm 0 !important;
+    padding-bottom: 1.5mm !important;
+  }
+  section h3 {
+    font-size: 11pt !important;
+    margin: 0 0 1mm 0 !important;
+  }
+
+  /* avoid orphan cards */
+  article {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    padding: 4mm 0 !important;
+    margin: 0 !important;
+  }
+
+  /* keep headings with content */
+  h1,
+  h2,
+  h3 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* lists tighter */
+  ul,
+  ol {
+    margin: 1mm 0 !important;
+  }
+  li {
+    margin: 0.5mm 0 !important;
+    page-break-inside: avoid;
+  }
+
+  /* shrink stack tags */
+  .text-xs,
+  [class*="text-xs"] {
+    font-size: 8pt !important;
+  }
+
+  /* paragraphs */
+  p {
+    font-size: 9.5pt !important;
+    line-height: 1.5 !important;
+    margin: 1mm 0 !important;
+  }
+
+  /* avoid breaks inside small content blocks */
+  dl,
+  ul,
+  .space-y-1\.5,
+  .space-y-2,
+  .space-y-3 {
+    page-break-inside: avoid;
+  }
+
+  /* hide "Detail" hover indicator */
+  span[aria-hidden]:has(> svg) {
+    display: none !important;
+  }
+
+  /* award badge — keep but compact */
+  .rounded-full {
+    border-radius: 4pt !important;
   }
 }

@@ -3,13 +3,11 @@
 import { useEffect, useState } from "react";
 
 const NAV = [
-  { id: "about", label: "About" },
+  { id: "top", label: "Home" },
   { id: "career", label: "Career" },
   { id: "skills", label: "Skills" },
   { id: "awards", label: "Awards" },
-  { id: "work", label: "Work" },
   { id: "ai", label: "AI" },
-  { id: "side", label: "Side" },
   { id: "contact", label: "Contact" },
 ];
 

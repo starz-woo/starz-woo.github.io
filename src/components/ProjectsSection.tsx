@@ -8,7 +8,6 @@ type Props = {
   title: string;
   description?: string;
   projects: Project[];
-  defaultExpanded?: boolean;
 };
 
 export function ProjectsSection({
@@ -17,18 +16,12 @@ export function ProjectsSection({
   title,
   description,
   projects,
-  defaultExpanded = false,
 }: Props) {
   return (
     <Section id={id} label={label} title={title} description={description}>
       <div>
         {projects.map((p, i) => (
-          <ProjectCard
-            key={p.title}
-            project={p}
-            index={i}
-            defaultExpanded={defaultExpanded}
-          />
+          <ProjectCard key={p.title} project={p} index={i} />
         ))}
       </div>
     </Section>

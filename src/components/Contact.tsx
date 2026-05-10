@@ -13,7 +13,7 @@ export function Contact() {
   return (
     <Section
       id="contact"
-      label="07 / Contact"
+      label="05 / Contact"
       title="새로운 기회나 협업에 관심이 있으시다면 편하게 연락주세요."
     >
       <ul className="divide-y divide-[var(--color-line-soft)] border-y border-[var(--color-line)]">

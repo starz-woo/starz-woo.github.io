@@ -3,7 +3,7 @@ import { Section } from "./Section";
 
 export function Skills() {
   return (
-    <Section id="skills" label="03 / Skills" title="다뤄본 도구와 기술">
+    <Section id="skills" label="02 / Skills" title="다뤄본 도구와 기술">
       <ul className="space-y-8">
         {skills.map((row) => (
           <li
