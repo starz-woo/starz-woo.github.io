@@ -1,10 +1,16 @@
+"use client";
+
+import { ChevronRight } from "lucide-react";
+import { useState } from "react";
 import { careers, education } from "@/data/career";
-import { soundmindCareer } from "@/data/soundmind";
+import { soundmindCareer, type SoundmindProject } from "@/data/soundmind";
 import { Section } from "./Section";
+import { SoundmindModal } from "./SoundmindModal";
 import { Tag } from "./Tag";
 
 export function Career() {
   const otherCareers = careers.filter((c) => c.company !== "사운드마인드");
+  const [openProject, setOpenProject] = useState<SoundmindProject | null>(null);
 
   return (
     <Section id="career" label="01 / Career" title="경력">
@@ -33,17 +39,31 @@ export function Career() {
                       key={p.name}
                       className="border-b border-[var(--color-line-soft)] pb-10 last:border-b-0 last:pb-0"
                     >
-                      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                        <h5 className="text-base font-semibold tracking-tight md:text-lg">
-                          {p.name}
-                        </h5>
-                        <span className="text-xs text-[var(--color-ink-subtle)]">
-                          {p.period}
-                        </span>
-                      </div>
-                      <p className="mt-1.5 text-sm leading-relaxed text-[var(--color-ink-muted)] md:text-base">
-                        {p.summary}
-                      </p>
+                      <button
+                        type="button"
+                        onClick={() => setOpenProject(p)}
+                        className="group -mx-2 block w-full rounded-lg px-2 py-1 text-left transition-colors hover:bg-[var(--color-surface)] print:pointer-events-none"
+                        aria-label={`${p.name} 상세 보기`}
+                      >
+                        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                          <h5 className="text-base font-semibold tracking-tight md:text-lg">
+                            {p.name}
+                          </h5>
+                          <span className="text-xs text-[var(--color-ink-subtle)]">
+                            {p.period}
+                          </span>
+                          <span className="ml-auto inline-flex items-center gap-1 text-xs font-medium text-[var(--color-ink-subtle)] transition-colors group-hover:text-[var(--color-ink)] print:hidden">
+                            상세 보기
+                            <ChevronRight
+                              size={12}
+                              className="transition-transform group-hover:translate-x-0.5"
+                            />
+                          </span>
+                        </div>
+                        <p className="mt-1.5 text-sm leading-relaxed text-[var(--color-ink-muted)] md:text-base">
+                          {p.summary}
+                        </p>
+                      </button>
                       <ul className="mt-4 space-y-2 text-sm leading-relaxed text-[var(--color-ink)] md:text-[15px]">
                         {p.highlights.map((h) => (
                           <li key={h} className="flex gap-2.5">
@@ -151,6 +171,13 @@ export function Career() {
           </div>
         </div>
       </div>
+
+      {openProject ? (
+        <SoundmindModal
+          project={openProject}
+          onClose={() => setOpenProject(null)}
+        />
+      ) : null}
     </Section>
   );
 }

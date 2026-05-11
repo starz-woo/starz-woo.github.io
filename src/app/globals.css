@@ -40,6 +40,14 @@ a {
   text-underline-offset: 3px;
 }
 
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @keyframes fade-up {
   from {
     opacity: 0;

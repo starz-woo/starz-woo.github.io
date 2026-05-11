@@ -4,6 +4,7 @@ export type ProjectLink = {
 };
 
 export type Project = {
+  slug: string;
   title: string;
   subtitle?: string;
   period: string;
@@ -15,12 +16,14 @@ export type Project = {
   aiModel?: string;
   links?: ProjectLink[];
   image?: string;
+  images?: string[];
   details?: string[];
   githubStars?: number;
 };
 
 export const aiProjects: Project[] = [
   {
+    slug: "wigvo",
     title: "WIGVO",
     subtitle: "AI 실시간 PSTN 전화 통역",
     period: "2026.02 - Present",
@@ -62,6 +65,7 @@ export const aiProjects: Project[] = [
     ],
   },
   {
+    slug: "wigtn-coding",
     title: "WIGTN Coding",
     subtitle: "Claude Code 멀티 에이전트 플러그인",
     period: "2026.01 - Present",
@@ -100,6 +104,7 @@ export const aiProjects: Project[] = [
     ],
   },
   {
+    slug: "wigent",
     title: "WIGENT",
     subtitle: "Agent Arena — AI 토론 → 랜딩 페이지 자동 생성",
     period: "2026.03.28",
@@ -135,6 +140,7 @@ export const aiProjects: Project[] = [
     image: "/projects/trae_hackthon_seoul.png",
   },
   {
+    slug: "wigtn-flake",
     title: "WIGTN FLAKE",
     subtitle: "목적 기반 동네 인텔리전스",
     period: "2026.03 - 2026.04",
@@ -170,15 +176,20 @@ export const aiProjects: Project[] = [
       "신뢰성은 3-Tier 폴백으로 확보 — Tier 1 Cortex Agent(Analyst×4 + data_to_chart), trial 제약 시 Cortex Analyst 직접 호출로 하강. Tier 2 GPT-4o Function Calling(execute_snowflake_sql / web_search Tavily / real_estate_transaction 국토부 / statistical_analysis), Tier 3 GPT-4o 순수 추론. 또한 Cortex LLM이 가비지 토큰(`<|reserved_special_token|>`, `Dünnschicht` 등)을 흘릴 경우 `hasGarbageTokens()`가 스트리밍 중 감지해 즉시 GPT-4o로 전환합니다.",
       "데이터 측면은 SPH·RichGo·NextTrade·아정당 4개 데이터셋을 모두 Semantic Model YAML로 정의해 Cortex Analyst가 단일 자연어 입력으로 4 도메인을 교차 조회하도록 했고, Dynamic Tables(`DT_DISTRICT_HEALTH`, `DT_DISTRICT_DNA`)와 Python UDF(디커플링 지수·DNA 유사도·목적 적합도)로 의사결정 점수를 계산합니다. 결과적으로 단순 추천이 아니라 '왜 1위인가'를 데이터로 논쟁하는 토론 + 이상 시그널이 결합된 데모로 Final Round 준우승을 수상했습니다.",
     ],
+    images: [
+      "/projects/wigtn-flake.jpg",
+      "/projects/wigtn-flake-architecture.png",
+    ],
     links: [
       {
         label: "GitHub",
         url: "https://github.com/wigtn/wigtn-for-snowflake",
       },
-      { label: "Demo Video", url: "https://www.youtube.com/watch?v=BHwb6zbUZuE" },
+      { label: "Demo Video", url: "https://youtu.be/1YzSp3SdzTk?si=XdEld5BCL4ZfRiAA" },
     ],
   },
   {
+    slug: "timelens",
     title: "TimeLens",
     subtitle: "AI 문화유산 컴패니언",
     period: "2026.03 - Present",
@@ -218,6 +229,7 @@ export const aiProjects: Project[] = [
     ],
   },
   {
+    slug: "wigss",
     title: "WIGSS",
     subtitle: "Style Shaper — Visual AI Code Refactoring",
     period: "2026.03 - Present",
@@ -258,6 +270,7 @@ export const aiProjects: Project[] = [
     ],
     image: "/projects/wigss-npm.png",
   },
+  /*
   {
     title: "WIGEX",
     subtitle: "해외여행 가계부 (개발 중)",
@@ -300,4 +313,5 @@ export const aiProjects: Project[] = [
     ],
     links: [{ label: "GitHub", url: "https://github.com/wigtn/wigex" }],
   },
+  */
 ];

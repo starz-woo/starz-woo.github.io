@@ -6,8 +6,8 @@ export function Awards() {
   return (
     <Section
       id="awards"
-      label="03 / Awards & Publications"
-      title="수상 & 논문"
+      label="03 / Awards"
+      title="수상"
     >
       <ul className="space-y-8">
         {awards.map((a) => (
