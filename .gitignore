@@ -6,3 +6,6 @@ out
 next-env.d.ts
 .env*
 !.env.example
+
+# Local PDF extraction working folder (regeneratable from ../WIGVO_*.pdf)
+wigvo_extracted/
