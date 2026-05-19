@@ -3,6 +3,13 @@ export type ProjectLink = {
   url: string;
 };
 
+export type ProjectArchitecture = {
+  image: string;
+  alt?: string;
+  caption?: string;
+  description: string[];
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -19,6 +26,7 @@ export type Project = {
   images?: string[];
   details?: string[];
   githubStars?: number;
+  architecture?: ProjectArchitecture;
 };
 
 export const aiProjects: Project[] = [
@@ -161,14 +169,11 @@ export const aiProjects: Project[] = [
       "OpenAI SDK",
     ],
     highlights: [
-      "Purpose-first UX — 토픽이 아니라 '무엇을 하고 싶은지'에서 시작하는 5개 프리셋(창업·렌탈·광고·투자·이상감지) + 자유 입력. 목적 컨텍스트가 토론·랭킹·리포트 전 단계에 주입됨",
-      "목적 기반 에이전트 동적 생성 — 고정 멤버는 PM 진행자 + 데이터 분석가뿐. 선택된 목적에 맞춰 도메인 전문가와 Cortex 분석가(Forecast / Insight / Sentiment / News / Anomaly)가 매 세션 다르게 소환되어 같은 데이터도 다른 관점으로 해석",
-      "Snowflake Cortex 11개 기능 자연스러운 통합 — Cortex Agent · Analyst×4 · LLM(claude-4-sonnet) · FORECAST · ANOMALY_DETECTION · AI_SENTIMENT · AI_CLASSIFY · data_to_chart · Dynamic Tables×2 · Python UDF×2 · Semantic Model YAML×4",
-      "ANOMALY_DETECTION 주연 승격 — 랭킹 결과에 '지금 이상 시그널 발견' 자동 주입으로 데모 클라이맥스 설계, 카페 매출 +18% 급성장·국지적 -12% 하락 등 실데이터 시연",
-      "3-Tier 폴백 아키텍처 — Cortex Agent → Cortex Analyst 직접 호출 → GPT-4o Function Calling(4 도구) → GPT-4o 순수 추론. trial 제약·토큰 붕괴를 모든 계층에서 그레이스풀 처리",
-      "하이브리드 모델 전략 — 데이터 분석은 Cortex Agent, 리포트 생성은 Cortex LLM(17.3s/1657자 벤치), 토론 페르소나는 GPT-4o. `hasGarbageTokens()` 스트리밍 검사로 Cortex 토큰 붕괴 시 즉시 GPT-4o 폴백",
-      "4개 데이터셋 전수 활용 — SPH(SKT 유동인구+신한카드+KCB 자산) / RichGo(아파트 시세 2012~2024) / NextTrade(주식 실시간) / 아정당(통신·GA4·콜센터). 각각 Semantic Model YAML로 Cortex Analyst 연결",
-      "Slack 스타일 SSE 실시간 토론방 → Top 3 랭킹 카드 + Vega-Lite FORECAST 차트 + 이상 시그널 배지 + 목적별 액션 체크리스트로 자연스러운 의사결정 흐름",
+      "Purpose-first UX — '무엇을 하고 싶은지'에서 시작하는 5개 프리셋(창업·렌탈·광고·투자·이상감지) + 자유 입력",
+      "목적 기반 에이전트 동적 생성 — PM 진행자 + 데이터 분석가만 고정, 나머지 도메인·Cortex 분석가는 목적에 맞춰 매 세션 다르게 소환",
+      "Snowflake Cortex 11개 기능 풀 활용 — Agent · Analyst · LLM · FORECAST · ANOMALY_DETECTION · AI Function · Dynamic Tables · Python UDF · Semantic Model",
+      "ANOMALY_DETECTION 주연 승격 — 랭킹 결과에 이상 시그널 자동 주입으로 데모 클라이맥스 구성",
+      "데이터셋 4종 전수 활용 — SPH · RichGo · NextTrade · AJD를 Semantic YAML로 통합 그라운딩",
     ],
     details: [
       "Snowflake AI & Data Hackathon 2026 Tech Track 출품작. 일반적인 '데이터 대시보드'가 아니라, 의사결정자(소상공인·B2B 마케터·프랜차이즈·개인 투자자·상권 운영자)가 자기 목적을 직접 선택하면 '어느 동네가 그 목적에 맞는지'를 데이터로 답해 주는 도구를 목표로 했습니다. 같은 쿼리라도 목적이 다르면 해석이 달라진다는 점이 핵심 가설.",
@@ -180,6 +185,18 @@ export const aiProjects: Project[] = [
       "/projects/wigtn-flake.jpg",
       "/projects/wigtn-flake-architecture.png",
     ],
+    architecture: {
+      image: "/projects/wigtn-flake-architecture.png",
+      alt: "WIGTN FLAKE 3-Layer Hybrid AI 아키텍처 — Brain · Data · Render",
+      caption:
+        "Brain(GPT-4o) · Data(Snowflake Cortex) · Render(Cortex LLM) 3-Layer Hybrid AI 아키텍처 — 외부 모델의 유연한 추론과 Cortex의 견고한 데이터 엔진을 결합한 설계.",
+      description: [
+        "WIGTN FLAKE의 핵심은 **3-Layer Hybrid AI 아키텍처**입니다. 데이터의 정확성과 풍부한 인사이트를 동시에 달성하기 위해 시스템을 **Brain · Data · Render** 세 계층으로 분리하고, 각 계층마다 가장 적합한 모델과 도구를 배치했습니다.",
+        "**Brain Layer — GPT-4o 오케스트레이터.** Cortex 내부에서 멀티 에이전트 토론 페르소나를 완전히 구현하기엔 기술적 제약이 있어, 외부 모델의 유연한 추론 능력을 빌렸습니다. GPT-4o가 사용자 목적에 맞춰 전문가 페르소나를 구성하고, 토론 흐름을 주도하며 서로 반론을 제기해 인사이트의 밀도를 끌어올립니다.",
+        "**Data Layer — Snowflake Cortex 풀스택.** 정확성을 책임지는 계층으로 Cortex의 Agent · LLM · ML Function · AI Function을 모두 적용했습니다. Trial 계정 제약으로 Cortex Agent를 직접 사용할 수 없어 Analyst 기능을 엔드포인트로 직접 호출하는 방식을 채택했고, 데이터셋별 정교한 Semantic YAML 설계로 자연어 질문이 정확한 SQL 쿼리로 변환되는 '데이터 그라운딩'을 실현했습니다. 토론 중 제기되는 가설은 사전 구축한 FORECAST 모델과 ANOMALY_DETECTION으로 즉시 검증·이상 징후를 포착하고, AI Sentiment / Classify로 비정형 데이터 분석 가능성도 열어 두었으며, SPH · RichGo · NextTrade · AJD 4개 데이터셋을 모두 활용했습니다.",
+        "**Render Layer — Cortex LLM 마크다운 스트리밍.** 토론 결과물을 단순 요약이 아닌, 핵심 지표 + 6개월 예측 전망 + 구체적 액션 아이템이 포함된 전문가 수준의 인사이트 리포트로 마크다운 스트리밍 렌더링합니다. 외부의 유연한 지능과 Snowflake의 견고한 데이터 엔진(Cortex)을 결합해, 누구에게나 전문가 수준 인텔리전스를 제공하는 것이 최종 목표입니다.",
+      ],
+    },
     links: [
       {
         label: "GitHub",

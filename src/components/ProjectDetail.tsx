@@ -14,6 +14,19 @@ import { useEffect, useMemo, useState } from "react";
 import type { Project } from "@/data/projects";
 import { Tag } from "./Tag";
 
+function renderEmphasis(text: string) {
+  const parts = text.split(/\*\*(.+?)\*\*/g);
+  return parts.map((part, i) =>
+    i % 2 === 1 ? (
+      <strong key={i} className="font-semibold text-[var(--color-ink)]">
+        {part}
+      </strong>
+    ) : (
+      <span key={i}>{part}</span>
+    ),
+  );
+}
+
 export function ProjectDetail({ project }: { project: Project }) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [activeSection, setActiveSection] = useState<string>("overview");
@@ -31,6 +44,8 @@ export function ProjectDetail({ project }: { project: Project }) {
     ];
     if (project.highlights.length > 0)
       list.push({ id: "highlights", label: "Highlights" });
+    if (project.architecture)
+      list.push({ id: "architecture", label: "Architecture" });
     if (project.details && project.details.length > 0)
       list.push({ id: "details", label: "Deep Dive" });
     if (project.stack.length > 0) list.push({ id: "stack", label: "Stack" });
@@ -38,6 +53,11 @@ export function ProjectDetail({ project }: { project: Project }) {
       list.push({ id: "links", label: "Links" });
     return list;
   }, [project]);
+
+  const architectureImageIndex = useMemo(() => {
+    if (!project.architecture) return -1;
+    return images.findIndex((src) => src === project.architecture!.image);
+  }, [project.architecture, images]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -181,6 +201,44 @@ export function ProjectDetail({ project }: { project: Project }) {
                   </li>
                 ))}
               </ul>
+            </section>
+          ) : null}
+
+          {project.architecture ? (
+            <section id="architecture" className="scroll-mt-24">
+              <h2 className="mb-4 text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-ink-subtle)]">
+                Architecture
+              </h2>
+              <button
+                type="button"
+                onClick={() => {
+                  if (architectureImageIndex >= 0) {
+                    setLightboxIndex(architectureImageIndex);
+                  }
+                }}
+                aria-label="아키텍처 이미지 크게 보기"
+                className="group block w-full cursor-zoom-in overflow-hidden rounded-xl border border-[var(--color-line)] bg-[var(--color-surface)]"
+                disabled={architectureImageIndex < 0}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={project.architecture.image}
+                  alt={
+                    project.architecture.alt ?? `${project.title} 아키텍처 다이어그램`
+                  }
+                  className="w-full transition-transform duration-300 group-hover:scale-[1.01]"
+                />
+              </button>
+              {project.architecture.caption ? (
+                <p className="mt-3 text-xs leading-relaxed text-[var(--color-ink-subtle)] md:text-[13px]">
+                  {project.architecture.caption}
+                </p>
+              ) : null}
+              <div className="mt-6 space-y-4 text-sm leading-[1.8] text-[var(--color-ink-muted)] md:text-[15px]">
+                {project.architecture.description.map((d, i) => (
+                  <p key={i}>{renderEmphasis(d)}</p>
+                ))}
+              </div>
             </section>
           ) : null}
 
