@@ -155,8 +155,11 @@
     .cv-nav { max-width: 800px; margin: 0 auto; padding: 1rem 1.5rem 0; font-size: 0.85rem; display: flex; gap: 1rem; justify-content: flex-end; }
     .cv-nav a { color: var(--color-text-secondary); }
     .cv-nav a[aria-current="page"] { color: var(--color-heading); font-weight: 500; }
+    .cv-actions { max-width: 800px; margin: 0 auto; padding: 1.25rem 1.5rem 0; display: flex; justify-content: flex-end; }
+    .cv-actions__btn { font-family: var(--font-body); font-size: 0.88rem; font-weight: 500; padding: 0.45rem 1rem; border: 1px solid var(--color-primary); border-radius: 4px; background: #ffffff; color: var(--color-primary); }
+    .cv-actions__btn:hover { background: var(--color-primary); color: #ffffff; }
     @media print {
-      .cv-nav { display: none; }
+      .cv-nav, .cv-actions { display: none; }
       @page { size: A4; margin: 18mm 16mm; }
       body { font-size: 9.6pt; line-height: 1.5; color: #000000; }
       .site-main { max-width: none; padding: 0; }
@@ -180,8 +183,10 @@
   <nav class="cv-nav" aria-label="CV navigation">
     <a href="/">Portfolio</a>
     <a href="/cv/ko/">한국어</a>
-    <a href="/cv/Hyun-woo-Cho-CV-en.pdf">PDF</a>
   </nav>
+  <div class="cv-actions">
+    <a class="cv-actions__btn" href="/cv/Hyun-woo-Cho-CV-en.pdf" download="Hyun-woo-Cho-CV-en.pdf">Download PDF</a>
+  </div>
   <main class="site-main">
     <header class="cv-header">
       <h1 class="cv-header__name">Hyun-woo Cho</h1>

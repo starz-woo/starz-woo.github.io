@@ -1,4 +1,4 @@
-import { ArrowDown, Mail } from "lucide-react";
+import { ArrowDown, FileText, Mail } from "lucide-react";
 import { profile } from "@/data/profile";
 import { PrintButton } from "./PrintButton";
 
@@ -122,6 +122,13 @@ export function Hero() {
                   이메일 보내기
                 </a>
                 <PrintButton label="포트폴리오 PDF 저장" />
+                <a
+                  href="/cv/"
+                  className="inline-flex items-center gap-2 rounded-full border border-[var(--color-line)] bg-white px-5 py-2.5 text-sm font-medium text-[var(--color-ink)] transition-all hover:bg-[var(--color-surface)] hover:-translate-y-0.5 print:hidden"
+                >
+                  <FileText size={14} />
+                  CV 보기
+                </a>
                 <span className="mx-1 hidden h-5 w-px bg-[var(--color-line)] md:inline-block" />
                 <a
                   href={profile.links.github}

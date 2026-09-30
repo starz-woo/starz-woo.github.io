@@ -36,17 +36,25 @@ export function Header() {
             AI Product Engineer
           </span>
         </a>
-        <nav className="hidden gap-6 text-sm text-[var(--color-ink-muted)] md:flex">
-          {NAV.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              className="transition-colors hover:text-[var(--color-ink)]"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
+        <div className="flex items-center gap-6 text-sm text-[var(--color-ink-muted)]">
+          <nav className="hidden gap-6 md:flex">
+            {NAV.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className="transition-colors hover:text-[var(--color-ink)]"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          <a
+            href="/cv/"
+            className="rounded-full border border-[var(--color-line)] bg-white px-3 py-1 text-xs font-medium text-[var(--color-ink)] transition-colors hover:bg-[var(--color-surface)]"
+          >
+            CV
+          </a>
+        </div>
       </div>
     </header>
   );
