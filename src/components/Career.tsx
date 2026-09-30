@@ -1,16 +1,12 @@
-"use client";
-
 import { ChevronRight } from "lucide-react";
-import { useState } from "react";
+import Link from "next/link";
 import { careers, education } from "@/data/career";
-import { soundmindCareer, type SoundmindProject } from "@/data/soundmind";
+import { soundmindCareer } from "@/data/soundmind";
 import { Section } from "./Section";
-import { SoundmindModal } from "./SoundmindModal";
 import { Tag } from "./Tag";
 
 export function Career() {
   const otherCareers = careers.filter((c) => c.company !== "사운드마인드");
-  const [openProject, setOpenProject] = useState<SoundmindProject | null>(null);
 
   return (
     <Section id="career" label="01 / Career" title="경력">
@@ -36,12 +32,11 @@ export function Career() {
                 <ul className="space-y-10">
                   {group.projects.map((p) => (
                     <li
-                      key={p.name}
+                      key={p.slug}
                       className="border-b border-[var(--color-line-soft)] pb-10 last:border-b-0 last:pb-0"
                     >
-                      <button
-                        type="button"
-                        onClick={() => setOpenProject(p)}
+                      <Link
+                        href={`/career/${p.slug}`}
                         className="group -mx-2 block w-full rounded-lg px-2 py-1 text-left transition-colors hover:bg-[var(--color-surface)] print:pointer-events-none"
                         aria-label={`${p.name} 상세 보기`}
                       >
@@ -63,7 +58,7 @@ export function Career() {
                         <p className="mt-1.5 text-sm leading-relaxed text-[var(--color-ink-muted)] md:text-base">
                           {p.summary}
                         </p>
-                      </button>
+                      </Link>
                       <ul className="mt-4 space-y-2 text-sm leading-relaxed text-[var(--color-ink)] md:text-[15px]">
                         {p.highlights.map((h) => (
                           <li key={h} className="flex gap-2.5">
@@ -172,12 +167,6 @@ export function Career() {
         </div>
       </div>
 
-      {openProject ? (
-        <SoundmindModal
-          project={openProject}
-          onClose={() => setOpenProject(null)}
-        />
-      ) : null}
     </Section>
   );
 }

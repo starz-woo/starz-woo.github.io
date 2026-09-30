@@ -1,4 +1,13 @@
+export type CaseStudy = {
+  title: string;
+  problem: string;
+  myRole: string;
+  approach: string;
+  result: string;
+};
+
 export type SoundmindProject = {
+  slug: string;
   name: string;
   period: string;
   summary: string;
@@ -6,6 +15,7 @@ export type SoundmindProject = {
   image?: string;
   about?: string;
   myRole?: string;
+  caseStudies?: CaseStudy[];
 };
 
 export type SoundmindGroup = {
@@ -21,14 +31,15 @@ export const soundmindCareer: {
 } = {
   company: "(주)사운드마인드",
   role: "Manager · Full-Stack 개발",
-  period: "2025.02 - 재직 중",
+  period: "2025.02 - 2026.06",
   groups: [
     {
       category: "B2B 사업",
       projects: [
         {
+          slug: "odiya",
           name: "오디야",
-          period: "2025.02 - 현재",
+          period: "2025.02 - 2025.06",
           summary: "GPS 기반 자녀 위치 추적 및 안심 관리 플랫폼",
           image: "/projects/odiya.png",
           about:
@@ -44,8 +55,9 @@ export const soundmindCareer: {
           ],
         },
         {
+          slug: "mohani",
           name: "모하니",
-          period: "2026.01 - 현재",
+          period: "2026.01 - 2026.06",
           summary: "자녀 스마트폰 사용 관리 및 부모 제어 서비스",
           image: "/projects/mohani.png",
           about:
@@ -61,8 +73,9 @@ export const soundmindCareer: {
           ],
         },
         {
+          slug: "soundmind-auth",
           name: "통합 인증 시스템",
-          period: "2026.01 - 현재",
+          period: "2026.01 - 2026.06",
           summary: "다중 서비스 대상 인증 및 사용자 관리 시스템",
           image: "/projects/soundmind.png",
           about:
@@ -83,6 +96,7 @@ export const soundmindCareer: {
       category: "R&D 과제",
       projects: [
         {
+          slug: "kocca-korean-speaking",
           name: "KOCCA 한국어 말하기 평가 플랫폼",
           period: "2025.11 - 2025.12",
           summary: "한국어능력시험 말하기 평가 및 관리 시스템",
