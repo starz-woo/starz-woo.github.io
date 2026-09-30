@@ -30,7 +30,7 @@ export const soundmindCareer: {
   groups: SoundmindGroup[];
 } = {
   company: "(주)사운드마인드",
-  role: "Manager · Full-Stack 개발",
+  role: "Manager · MX팀",
   period: "2025.02 - 2026.06",
   groups: [
     {

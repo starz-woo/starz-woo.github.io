@@ -42,6 +42,8 @@ export const skills: SkillCategory[] = [
     category: "Database",
     items: [
       { name: "MySQL", slug: "mysql" },
+      { name: "PostgreSQL", slug: "postgresql" },
+      { name: "Redis", slug: "redis" },
       { name: "Supabase", slug: "supabase" },
       { name: "Firebase", slug: "firebase" },
     ],
@@ -52,6 +54,7 @@ export const skills: SkillCategory[] = [
       { name: "Git", slug: "git" },
       { name: "GitHub", slug: "github" },
       { name: "Docker", slug: "docker" },
+      { name: "GitHub Actions", slug: "githubactions" },
       { name: "Vercel", slug: "vercel" },
       { name: "Expo", slug: "expo" },
     ],

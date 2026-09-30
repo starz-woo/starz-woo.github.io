@@ -94,7 +94,7 @@ export const aiProjects: Project[] = [
     subtitle: "목적 기반 동네 인텔리전스",
     period: "2026.03 - 2026.04",
     role: "팀 개발 (4인)",
-    award: "Snowflake AI & Data Hackathon 2026 Korea Final Round 준우승",
+    award: "Snowflake AI & Data Hackathon 2026 Korea Tech Track 2위",
     description:
       "사용자가 '카페 창업 / 렌탈 가전 타겟 / 광고판 입지 / 부동산 투자 / 상권 이상 감지' 같은 목적을 선택하면, 목적에 맞는 AI 전문가 에이전트가 동적으로 소환되어 Snowflake Cortex 기반으로 부동산 시세 × 유동인구 × 카드매출 × 통신계약 4개 데이터셋을 교차 분석하고, Top 3 동네 추천 + 이상 시그널 감지 + 6개월 예측 + 실행 액션을 자동 생성합니다.",
     aiModel: "Snowflake Cortex (claude-4-sonnet) · GPT-4o",

@@ -9,13 +9,13 @@ export const awards: Award[] = [
   {
     title: "대상",
     org: "Build with TRAE Seoul Hackathon 2026",
-    date: "2026",
+    date: "2026.03",
     description: "WIGENT — AI 멀티 에이전트 토론 플랫폼",
   },
   {
-    title: "준우승",
-    org: "Snowflake AI & Data Hackathon 2026 Korea — Final Round",
-    date: "2026",
+    title: "Tech Track 2위",
+    org: "Snowflake AI & Data Hackathon 2026 Korea",
+    date: "2026.04",
     description: "WIGTN FLAKE — 목적 기반 동네 인텔리전스",
   },
   {

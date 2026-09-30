@@ -6,10 +6,61 @@ import { Section } from "./Section";
 import { Tag } from "./Tag";
 
 export function Career() {
-  const otherCareers = careers.filter((c) => c.company !== "사운드마인드");
+  const currentCareers = careers.filter((c) => c.company === "WIGTN");
+  const otherCareers = careers.filter(
+    (c) => c.company !== "사운드마인드" && c.company !== "WIGTN",
+  );
 
   return (
     <Section id="career" label="01 / Career" title="경력">
+      {currentCareers.length > 0 ? (
+        <ul className="mb-14 space-y-10 border-b border-[var(--color-line)] pb-10">
+          {currentCareers.map((c) => (
+            <li
+              key={c.company}
+              className="grid grid-cols-1 gap-3 border-b border-[var(--color-line-soft)] pb-10 last:border-b-0 last:pb-0 md:grid-cols-[160px_1fr] md:gap-8"
+            >
+              <div className="text-sm text-[var(--color-ink-subtle)]">
+                {c.period}
+              </div>
+              <div>
+                <div className="flex flex-wrap items-baseline gap-2">
+                  <h3 className="text-lg font-semibold tracking-tight">
+                    {c.company}
+                  </h3>
+                  <span className="text-sm text-[var(--color-ink-muted)]">
+                    · {c.role}
+                  </span>
+                </div>
+                <p className="mt-2.5 text-sm leading-relaxed text-[var(--color-ink-muted)] md:text-base">
+                  {c.description}
+                </p>
+                {c.highlights && c.highlights.length > 0 ? (
+                  <ul className="mt-3 space-y-1.5 text-sm leading-relaxed text-[var(--color-ink)] md:text-[15px]">
+                    {c.highlights.map((h) => (
+                      <li key={h} className="flex gap-2.5">
+                        <span
+                          aria-hidden
+                          className="mt-[0.55em] h-1 w-1 shrink-0 rounded-full bg-[var(--color-ink)]"
+                        />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+                {c.stack && c.stack.length > 0 ? (
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {c.stack.map((s) => (
+                      <Tag key={s}>{s}</Tag>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+
       {/* Soundmind — detailed career description */}
       <div className="mb-14 grid grid-cols-1 gap-3 border-b border-[var(--color-line)] pb-8 md:grid-cols-[160px_1fr] md:gap-8">
         <div className="text-sm text-[var(--color-ink-subtle)]">

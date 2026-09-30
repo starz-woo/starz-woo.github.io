@@ -2,9 +2,9 @@ export const profile = {
   name: "조현우",
   role: "AI Product Engineer",
   tagline:
-    "React, Next.js, React Native로 프로덕트를 만들고 AI를 핵심 기능으로 활용한 서비스를 개발합니다.",
+    "AI 에이전트를 제품으로 만듭니다. React, Next.js, React Native 기반의 프론트엔드부터 백엔드까지 end-to-end로 구현합니다.",
   about:
-    '프론트엔드 개발자로 커리어를 시작해 사용자 경험과 인터페이스 설계에 대한 감각을 쌓았고, 화면 너머 제품 전반의 문제로 관심을 넓히며 지금은 프론트엔드와 백엔드를 아우르는 Product Engineer로 성장하고 있습니다.\n\n기획·디자인·엔지니어링이 맞닿는 지점에서 일하며, "왜 이 제품을 만드는가"에 답할 수 있는 엔지니어를 지향합니다. 사용자 관점에서 출발해 비즈니스 임팩트까지 이어지는 엔드투엔드 개발을 통해 제품의 가치를 직접 만들어내는 개발자로 커리어를 확장해 가고 있습니다.',
+    "프론트엔드 개발자로 커리어를 시작해 사용자 경험과 인터페이스 설계 감각을 쌓았고, 지금은 AI 에이전트를 제품으로 만드는 AI Product Engineer로 일하고 있습니다.\n\n멀티 에이전트 오케스트레이션, 스트리밍 에이전트 인터페이스, 실시간 음성 에이전트를 웹과 모바일에서 end-to-end로 구현하며, Claude Code, Codex 같은 코딩 에이전트로 빠르게 프로토타입을 만들고 반복해서 개선합니다.",
   email: "gus007dn@gmail.com",
   links: {
     github: "https://github.com/starz-woo",
