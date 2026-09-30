@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV | 조현우</title>
+  <meta name="description" content="조현우 이력서">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+
+  <style>
+    /* Academic CV styles, al-folio inspired (Roboto + Roboto Slab). */
+    :root {
+      --color-primary: #0076df;
+      --color-text: #404040;
+      --color-heading: #1a1a1a;
+      --color-text-secondary: #6b6b6b;
+      --color-muted: #999999;
+      --color-border: #e8e8e8;
+      --font-body: 'Roboto', 'Pretendard', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Roboto Slab', 'Pretendard', Georgia, serif;
+      --max-width: 800px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--color-text);
+      background: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    a { color: var(--color-primary); text-decoration: none; }
+    strong, b { font-weight: 500; color: var(--color-heading); }
+
+    .site-main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    .section { margin-bottom: 3rem; }
+    .section__title {
+      font-family: var(--font-heading);
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: var(--color-heading);
+      margin-bottom: 1.1rem;
+    }
+    .section__body { font-size: 0.95rem; }
+    .section__body p + p { margin-top: 0.6rem; }
+
+    /* Header */
+    .cv-header { margin-bottom: 2.5rem; }
+    .cv-header__name {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--color-heading);
+    }
+    .cv-header__alias {
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.6rem;
+    }
+    .cv-header__contact {
+      font-size: 0.92rem;
+      color: var(--color-text-secondary);
+    }
+
+    /* Publications */
+    .pub { margin-bottom: 1.5rem; }
+    .pub__title {
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--color-heading);
+      margin-bottom: 0.1rem;
+    }
+    .pub__authors { font-size: 0.93rem; color: var(--color-text-secondary); }
+    .pub__authors strong {
+      font-weight: 500;
+      color: var(--color-text);
+      text-decoration: underline;
+      text-decoration-color: var(--color-border);
+      text-underline-offset: 3px;
+    }
+    .pub__venue {
+      font-size: 0.92rem;
+      font-style: italic;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    .pub__note { font-size: 0.78rem; color: var(--color-text-secondary); }
+    .pub__links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .pub__link {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      padding: 0.12rem 0.55rem;
+      border: 1px solid var(--color-primary);
+      border-radius: 3px;
+      color: var(--color-primary);
+      text-transform: uppercase;
+    }
+
+    /* Projects / hackathons */
+    .proj { margin-bottom: 1.6rem; }
+    .proj__meta {
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-primary);
+    }
+    .proj__title {
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--color-heading);
+      margin: 0.1rem 0;
+    }
+    .proj__desc { font-size: 0.93rem; margin-bottom: 0.45rem; }
+
+    /* Entry tables (education / experience) */
+    .entries { width: 100%; border-collapse: collapse; }
+    .entries td { vertical-align: top; padding: 0.45rem 0; }
+    .entries__date {
+      width: 165px;
+      padding-right: 1.25rem;
+      font-size: 0.92rem;
+      color: var(--color-text-secondary);
+      white-space: nowrap;
+    }
+    .entries__org { font-weight: 500; color: var(--color-heading); }
+    .entries__role { font-size: 0.95rem; color: var(--color-text-secondary); }
+    .entries__status { font-size: 0.85rem; color: var(--color-text-secondary); }
+    .entries__date .entries__status { margin-top: 0.1rem; white-space: normal; }
+    .entries__desc { font-size: 0.92rem; margin-top: 0.3rem; }
+    .entries__desc ul { margin-left: 1.1rem; }
+    .entries__desc li { margin-bottom: 0.2rem; }
+
+
+    .entries__desc .pub__link { margin-left: 0.3rem; padding: 0.05rem 0.45rem; font-size: 0.68rem; line-height: 1.3; vertical-align: 1px; white-space: nowrap; }
+
+    .cv-nav { max-width: 800px; margin: 0 auto; padding: 1rem 1.5rem 0; font-size: 0.85rem; display: flex; gap: 1rem; justify-content: flex-end; }
+    .cv-nav a { color: var(--color-text-secondary); }
+    .cv-nav a[aria-current="page"] { color: var(--color-heading); font-weight: 500; }
+    @media print {
+      .cv-nav { display: none; }
+      @page { size: A4; margin: 18mm 16mm; }
+      body { font-size: 9.6pt; line-height: 1.5; color: #000000; }
+      .site-main { max-width: none; padding: 0; }
+      a { color: #000000; }
+      .section { margin-bottom: 1.15rem; }
+      .cv-header { margin-bottom: 1.4rem; }
+      .section__title { break-after: avoid; margin-bottom: 0.8rem; }
+      .proj { margin-bottom: 1.1rem; }
+      .pub { margin-bottom: 1.1rem; }
+      .entries, .entries tbody { display: block; width: 100%; }
+      .entries tr { display: flex; align-items: flex-start; }
+      .entries td { display: block; }
+      .entries td:first-child { flex: 0 0 165px; }
+      .entries td:last-child { flex: 1 1 auto; min-width: 0; }
+      .pub, .proj, .section--keep { break-inside: avoid; }
+      .entries__org, .entries__role { break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="cv-nav" aria-label="CV navigation">
+    <a href="/">Portfolio</a>
+    <a href="/cv/">English</a>
+    <a href="/cv/Hyun-woo-Cho-CV-ko.pdf">PDF</a>
+  </nav>
+  <main class="site-main">
+    <header class="cv-header">
+      <h1 class="cv-header__name">조현우</h1>
+      <p class="cv-header__alias">(Hyun-woo Cho, David Cho)</p>
+      <p class="cv-header__contact">
+        <a href="mailto:gus007dn@gmail.com">gus007dn@gmail.com</a> &middot;
+        <a href="https://github.com/starz-woo">github.com/starz-woo</a> &middot;
+        서울, 대한민국
+      </p>
+    </header>
+
+    <!-- 관심 분야 -->
+    <section class="section">
+      <h2 class="section__title">관심 분야</h2>
+      <p>AI 에이전트를 제품으로 만드는 일. 멀티 에이전트 오케스트레이션과 스트리밍 에이전트 인터페이스, 실시간 음성 에이전트를 웹과 모바일에서 end-to-end로 구현하고, Claude Code, Codex 같은 코딩 에이전트로 빠르게 출시하는 데 관심이 있습니다.</p>
+    </section>
+
+    <!-- 경력 (최신순) -->
+    <section class="section">
+      <h2 class="section__title">경력</h2>
+      <table class="entries">
+        <tbody>
+          <tr>
+            <td class="entries__date">2026.01 - 현재</td>
+            <td>
+              <div class="entries__org">WIGTN</div>
+              <div class="entries__role">AI Product Engineer, AI 리서치 &amp; 엔지니어링 회사</div>
+              <div class="entries__desc">
+                <ul>
+                  <li>프로 e스포츠 팀과 PoC 진행 중(2026.09 착수): 격투 게임 선수의 피격 원인을 구분하는 프레임 단위 영상 분석 시스템. 제안서와 로드맵을 작성하고, 공개 60fps 경기 영상으로 피격 검출과 체력바 추적을 프로토타이핑.</li>
+                  <li>Web Agency 세일즈 데모(커뮤니티, 회사 리뷰, 채용, 운영 백오피스를 갖춘 커리어 플랫폼) 개발. 시안 마크업만 있던 화면 20종을 실제로 동작하게 배선하고, 팀 코어 모듈을 벤더링해 비공개 레지스트리 토큰 없이 정적 빌드되도록 구성.</li>
+                  <li>권한 확인, step-up 재인증, 멱등키를 순서대로 통과한 조치만 상태에 반영되고 감사 기록에 남도록 관리자 조치 흐름을 연결하고, 게스트·회원·운영자 역할 전환을 붙여 권한 게이트 3단이 실제로 관찰되도록 구성.</li>
+                  <li>로컬 저장 상태의 스키마 변경으로 화면이 깨지던 문제를 행 단위 병합과 스키마 버전 스탬프 두 겹으로 해결.</li>
+                  <li>오픈소스 Claude Code 플러그인 WIGTN Plugins에 기여: frontend-development 플러그인 초기 버전(frontend-developer 에이전트, Next.js App Router·React·Tailwind·테스트 스킬, /add-feature 명령)을 작성하고, /screen-spec 스킬을 그레이스케일 와이어프레임, 모바일 와이어프레임 템플릿, --interview·--platform 옵션으로 개편. <a href="/cv/projects/wigtn-coding/" class="pub__link">View details</a></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="entries__date">2025.02 - 2026.06</td>
+            <td>
+              <div class="entries__org">(주)사운드마인드</div>
+              <div class="entries__role">매니저, MX팀</div>
+              <div class="entries__desc">
+                <ul>
+                  <li>B2B 자녀 안심 서비스인 위치 추적 앱(오디야)과 부모 제어 앱(모하니), 그리고 두 서비스의 통합 인증 시스템을 React Native 앱, 관리자 웹, 백엔드에 걸쳐 개발하고 운영.</li>
+                  <li>Redis 캐싱, batch 처리, DB partitioning/indexing을 적용해 분당 3,000~5,000건 규모의 위치 데이터에서 발생하던 처리 병목과 DB 부하 개선. <a href="/cv/career/odiya/" class="pub__link">View details</a></li>
+                  <li>Activity Recognition API와 Android 센서로 실제 이동 시점에만 고정밀 위치 추적이 켜지도록 최적화해 배터리 사용량 개선.</li>
+                  <li>웹 기반 보호자 시스템을 대체하는 React Native 보호자 앱과 사용자 상태·위치 데이터 모니터링용 관리자 대시보드를 구축, B2B 사업 매출 약 230% 성장에 기여. <a href="/cv/career/odiya/" class="pub__link">View details</a></li>
+                  <li>부모 제어 앱에 FCM 기반 실시간 디바이스 제어 구조를 설계하고, Android foreground/background 상태 차이로 생기는 이벤트 누락을 상태 재동기화와 fallback 처리로 해결. <a href="/cv/career/mohani/" class="pub__link">View details</a></li>
+                  <li>앱 사용 제한, 수면 모드, 특정 콘텐츠 차단 등 부모 제어 기능과 Redis 기반 상태 캐싱, 앱별 사용 통계 집계 및 시각화 구현.</li>
+                  <li>서비스별로 분산되어 있던 인증을 통합한 공통 인증 시스템을 설계·구축. 보호자/피보호자 역할 기반 인증 정책, 인증 서버 부하 제어, Blue-Green 무중단 배포, 메트릭·로그 통합 모니터링 포함. <a href="/cv/career/soundmind-auth/" class="pub__link">View details</a></li>
+                  <li>KOCCA R&amp;D 과제로 연세대학교 한국어능력시험에서 평가자 120명과 채점자 20명이 동시에 사용하는 말하기 평가 플랫폼 구축. 평가 상태 충돌과 중복 채점을 막는 단계별 평가 workflow, 임시 저장 및 상태 복구, S3 저장과 Wavesurfer.js 스트리밍 파형 시각화, STT 기반 음성 처리, 루브릭 기반 결과 분석 포함. <a href="/cv/career/kocca-korean-speaking/" class="pub__link">View details</a></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 해커톤 -->
+    <section class="section">
+      <h2 class="section__title">해커톤</h2>
+      <article class="proj">
+        <p class="proj__meta">H0: Hack the Zero Stack · Vercel &times; AWS</p>
+        <p class="proj__title">OpenSlot: 초과 판매 없는 티켓 판매 인프라</p>
+        <p class="proj__desc">
+          좌석 원장은 멀티 리전 Amazon Aurora DSQL에, 탐색은 PostGIS와 pgvector를 얹은 Aurora PostgreSQL에 두어
+          전 세계 구매자가 같은 좌석에 동시에 몰려도 초과 판매가 0건임을 보장하는 B2B 티켓 판매 인프라.
+          Aurora PostgreSQL 탐색 플레인 구축, 구매자 플로우를 포스터 디자인 시스템으로 재구성, 디자인 QA와 E2E 점검을 담당.
+          Next.js on Vercel.
+        </p>
+        <div class="pub__links">
+          <a href="https://github.com/wigtn/aws-hackathon-dsql" class="pub__link">GitHub</a>
+          <a href="https://devpost.com/software/openslot" class="pub__link">Devpost</a>
+          <a href="https://youtu.be/o9iaDAvBSZY" class="pub__link">Video</a>
+        </div>
+      </article>
+      <article class="proj">
+        <p class="proj__meta">Google Cloud Rapid Agent Hackathon</p>
+        <p class="proj__title">Custos: GitLab용 상시 가동 AI 코드 리뷰 봇</p>
+        <p class="proj__desc">
+          ADK 트리아지 오케스트레이터가 머지 리퀘스트를 리뷰하고, 머지된 코드를 주기적으로 점검하며,
+          실제 인시던트에서 새 리뷰 스킬을 학습하는 자기 진화형 GitLab 코드 리뷰 에이전트.
+          보안, 성능, 테스트 품질, 팀 리드 리뷰어 페르소나의 규칙 기반 검사기와 발견 사항 간 충돌 합성,
+          머지 리퀘스트 opt-out 규칙(Draft 제목, skip 라벨, 매직 코멘트)을 담당.
+        </p>
+        <div class="pub__links">
+          <a href="https://gitlab.com/wigtn1/wigtn-gitlab-custos" class="pub__link">GitLab</a>
+          <a href="https://devpost.com/software/wigtn-bot" class="pub__link">Devpost</a>
+          <a href="https://youtu.be/UOhzd3VeB84" class="pub__link">Video</a>
+        </div>
+      </article>
+      <article class="proj">
+        <p class="proj__meta">Snowflake AI &amp; Data Hackathon 2026 Korea · Tech Track 2위</p>
+        <p class="proj__title">WIGTN FLAKE: 목적 기반 상권 인텔리전스 플랫폼</p>
+        <p class="proj__desc">
+          오케스트레이터가 목적별 전문가 에이전트를 배정해 부동산, 유동 인구, 카드 소비, 통신 데이터를
+          Snowflake Cortex 위에서 교차 분석하는 지역 추천 플랫폼. Cortex 분석 파이프라인, 6개 축 기반
+          지역 프로파일링과 3개 지역 비교 모드, SSE 화면 검증용 스트림 목 기반 Playwright E2E를 담당.
+        </p>
+        <div class="pub__links">
+          <a href="https://youtu.be/1YzSp3SdzTk" class="pub__link">Video</a>
+          <a href="https://www.newswire.co.kr/newsRead.php?no=1033575" class="pub__link">News</a>
+        </div>
+      </article>
+      <article class="proj">
+        <p class="proj__meta">Build with TRAE Seoul · ByteDance · 대상</p>
+        <p class="proj__title">WIGENT: 사업 아이디어 멀티 에이전트 토론 플랫폼</p>
+        <p class="proj__desc">
+          오케스트레이터가 PM 에이전트를 중심으로 전문가 에이전트를 생성하고 퇴장시키며 토론을 진행하고,
+          결론을 랜딩 페이지로 만들어 주는 멀티 에이전트 토론 플랫폼. 오케스트레이터와 SSE API,
+          병렬로 개발한 세 파트의 통합, Next.js 코드 추출 기능을 담당.
+        </p>
+        <div class="pub__links">
+          <a href="https://github.com/wigtn/wigent" class="pub__link">GitHub</a>
+        </div>
+      </article>
+      <article class="proj">
+        <p class="proj__meta">Gemini Live Agent Challenge · Google</p>
+        <p class="proj__title">TimeLens: 멀티모달 AI 박물관 큐레이터</p>
+        <p class="proj__desc">
+          Gemini Live API 위에서 카메라로 유물을 인식하고 실시간 음성으로 설명하며 복원 이미지를 생성하는
+          멀티모달 AI 큐레이터. TTS 재생이 끊기는 문제를 오디오 파이프라인의 선제 스케줄링으로 해결.
+          Gemini Live API, Google ADK, Firebase, Cloud Run.
+        </p>
+        <div class="pub__links">
+          <a href="https://github.com/wigtn/wigtn-timelens" class="pub__link">GitHub</a>
+          <a href="https://devpost.com/software/wigtn-agent" class="pub__link">Devpost</a>
+          <a href="https://youtu.be/ITaMtVO5jFg" class="pub__link">Video</a>
+        </div>
+      </article>
+      <article class="proj">
+        <p class="proj__meta">Cursor Seoul Hackathon 2026 · 1차</p>
+        <p class="proj__title">WIGVO: 전화가 유일한 관문인 서비스를 대신 뚫어주는 AI 음성 비서</p>
+        <p class="proj__desc">
+          채팅으로 요구사항을 수집해 동적 통화 프롬프트를 만들고, 전화로만 예약을 받는 곳에 사용자를 대신해 실제로
+          전화를 거는 음성 비서. 4명이 4시간 동안 개발하며 채팅 프론트엔드, 로그인 흐름, 대화 상태 관리를 담당.
+          Next.js 16, OpenAI, ElevenLabs Conversational AI, Twilio, Supabase.
+        </p>
+        <div class="pub__links">
+          <a href="https://github.com/wigtn/wigtn-call-agent" class="pub__link">GitHub</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- 논문 -->
+    <section class="section">
+      <h2 class="section__title">논문</h2>
+      <article class="pub">
+        <p class="pub__authors">Sang-Woo Son, Hyeong-seob Kim<sup aria-label="corresponding author">*</sup>, Hyeonsang Kim, <strong>Hyun-woo Cho</strong>, Jinmo Kim</p>
+        <p class="pub__title">Retrieval-Conditional Parsing Score (RCPS): Choosing Document Parsers by Retrieval, Not by Appearance</p>
+        <p class="pub__venue">Accepted to EMNLP 2026 Industry Track.</p>
+        <p class="pub__note">* Corresponding author</p>
+      </article>
+      <article class="pub">
+        <p class="pub__authors">Hyeong-seob Kim, Sang-Woo Son, <strong>Hyun-woo Cho</strong>, Hyeonsang Kim, Jinmo Kim</p>
+        <p class="pub__title">WIGVO: Real-Time Bidirectional Speech Translation over Legacy PSTN Calls via Dual-Session Echo Gating</p>
+        <p class="pub__venue">In Proceedings of ACL 2026 System Demonstrations.</p>
+        <div class="pub__links">
+          <a href="https://aclanthology.org/2026.acl-demo.33/" class="pub__link">Paper</a>
+          <a href="https://youtu.be/jK1CDOQExLw" class="pub__link">Video</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- 학력 -->
+    <section class="section section--keep">
+      <h2 class="section__title">학력</h2>
+      <table class="entries">
+        <tbody>
+          <tr>
+            <td class="entries__date">2016.03 - 2022.02</td>
+            <td>
+              <div class="entries__org">광운대학교</div>
+              <div class="entries__role">컴퓨터정보통신공학 학사, 학점 3.77 / 4.5</div>
+              <div class="entries__desc">
+                <ul>
+                  <li>졸업 연구: BCG(심탄도), ECG(심전도), PPG(광혈류측정) 신호로 혈압을 추정하는 딥러닝 모델과 건강 지표 모니터링 시스템.</li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 수상 -->
+    <section class="section section--keep">
+      <h2 class="section__title">수상</h2>
+      <table class="entries">
+        <tbody>
+          <tr>
+            <td class="entries__date">2026.04</td>
+            <td>
+              <div class="entries__org">Snowflake AI &amp; Data Hackathon 2026 Korea, Tech Track 2위</div>
+              <div class="entries__role">Team WIGTN, WIGTN FLAKE</div>
+            </td>
+          </tr>
+          <tr>
+            <td class="entries__date">2026.03</td>
+            <td>
+              <div class="entries__org">Build with TRAE Seoul 대상, ByteDance</div>
+              <div class="entries__role">Team WIGTN, WIGENT</div>
+            </td>
+          </tr>
+          <tr>
+            <td class="entries__date">2019</td>
+            <td>
+              <div class="entries__org">Dean's List</div>
+              <div class="entries__role">광운대학교 컴퓨터정보공학부</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

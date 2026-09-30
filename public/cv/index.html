@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV | Hyun-woo Cho</title>
+  <meta name="description" content="Curriculum Vitae of Hyun-woo Cho.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+
+  <style>
+    /* Academic CV styles, al-folio inspired (Roboto + Roboto Slab). */
+    :root {
+      --color-primary: #0076df;
+      --color-text: #404040;
+      --color-heading: #1a1a1a;
+      --color-text-secondary: #6b6b6b;
+      --color-muted: #999999;
+      --color-border: #e8e8e8;
+      --font-body: 'Roboto', 'Pretendard', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Roboto Slab', 'Pretendard', Georgia, serif;
+      --max-width: 800px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--color-text);
+      background: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    a { color: var(--color-primary); text-decoration: none; }
+    strong, b { font-weight: 500; color: var(--color-heading); }
+
+    .site-main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    .section { margin-bottom: 3rem; }
+    .section__title {
+      font-family: var(--font-heading);
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: var(--color-heading);
+      margin-bottom: 1.1rem;
+    }
+    .section__body { font-size: 0.95rem; }
+    .section__body p + p { margin-top: 0.6rem; }
+
+    /* Header */
+    .cv-header { margin-bottom: 2.5rem; }
+    .cv-header__name {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--color-heading);
+    }
+    .cv-header__alias {
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.6rem;
+    }
+    .cv-header__contact {
+      font-size: 0.92rem;
+      color: var(--color-text-secondary);
+    }
+
+    /* Publications */
+    .pub { margin-bottom: 1.5rem; }
+    .pub__title {
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--color-heading);
+      margin-bottom: 0.1rem;
+    }
+    .pub__authors { font-size: 0.93rem; color: var(--color-text-secondary); }
+    .pub__authors strong {
+      font-weight: 500;
+      color: var(--color-text);
+      text-decoration: underline;
+      text-decoration-color: var(--color-border);
+      text-underline-offset: 3px;
+    }
+    .pub__venue {
+      font-size: 0.92rem;
+      font-style: italic;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    .pub__note { font-size: 0.78rem; color: var(--color-text-secondary); }
+    .pub__links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .pub__link {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      padding: 0.12rem 0.55rem;
+      border: 1px solid var(--color-primary);
+      border-radius: 3px;
+      color: var(--color-primary);
+      text-transform: uppercase;
+    }
+
+    /* Projects / hackathons */
+    .proj { margin-bottom: 1.6rem; }
+    .proj__meta {
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-primary);
+    }
+    .proj__title {
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--color-heading);
+      margin: 0.1rem 0;
+    }
+    .proj__desc { font-size: 0.93rem; margin-bottom: 0.45rem; }
+
+    /* Entry tables (education / experience) */
+    .entries { width: 100%; border-collapse: collapse; }
+    .entries td { vertical-align: top; padding: 0.45rem 0; }
+    .entries__date {
+      width: 165px;
+      padding-right: 1.25rem;
+      font-size: 0.92rem;
+      color: var(--color-text-secondary);
+      white-space: nowrap;
+    }
+    .entries__org { font-weight: 500; color: var(--color-heading); }
+    .entries__role { font-size: 0.95rem; color: var(--color-text-secondary); }
+    .entries__status { font-size: 0.85rem; color: var(--color-text-secondary); }
+    .entries__date .entries__status { margin-top: 0.1rem; white-space: normal; }
+    .entries__desc { font-size: 0.92rem; margin-top: 0.3rem; }
+    .entries__desc ul { margin-left: 1.1rem; }
+    .entries__desc li { margin-bottom: 0.2rem; }
+
+
+    .entries__desc .pub__link { margin-left: 0.3rem; padding: 0.05rem 0.45rem; font-size: 0.68rem; line-height: 1.3; vertical-align: 1px; white-space: nowrap; }
+
+    .cv-nav { max-width: 800px; margin: 0 auto; padding: 1rem 1.5rem 0; font-size: 0.85rem; display: flex; gap: 1rem; justify-content: flex-end; }
+    .cv-nav a { color: var(--color-text-secondary); }
+    .cv-nav a[aria-current="page"] { color: var(--color-heading); font-weight: 500; }
+    @media print {
+      .cv-nav { display: none; }
+      @page { size: A4; margin: 18mm 16mm; }
+      body { font-size: 9.6pt; line-height: 1.5; color: #000000; }
+      .site-main { max-width: none; padding: 0; }
+      a { color: #000000; }
+      .section { margin-bottom: 1.15rem; }
+      .cv-header { margin-bottom: 1.4rem; }
+      .section__title { break-after: avoid; margin-bottom: 0.8rem; }
+      .proj { margin-bottom: 1.1rem; }
+      .pub { margin-bottom: 1.1rem; }
+      .entries, .entries tbody { display: block; width: 100%; }
+      .entries tr { display: flex; align-items: flex-start; }
+      .entries td { display: block; }
+      .entries td:first-child { flex: 0 0 165px; }
+      .entries td:last-child { flex: 1 1 auto; min-width: 0; }
+      .pub, .proj, .section--keep { break-inside: avoid; }
+      .entries__org, .entries__role { break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="cv-nav" aria-label="CV navigation">
+    <a href="/">Portfolio</a>
+    <a href="/cv/ko/">한국어</a>
+    <a href="/cv/Hyun-woo-Cho-CV-en.pdf">PDF</a>
+  </nav>
+  <main class="site-main">
+    <header class="cv-header">
+      <h1 class="cv-header__name">Hyun-woo Cho</h1>
+      <p class="cv-header__alias">(David Cho)</p>
+      <p class="cv-header__contact">
+        <a href="mailto:gus007dn@gmail.com">gus007dn@gmail.com</a> &middot;
+        <a href="https://github.com/starz-woo">github.com/starz-woo</a> &middot;
+        Seoul, Republic of Korea
+      </p>
+    </header>
+
+    <!-- Interests -->
+    <section class="section">
+      <h2 class="section__title">Interests</h2>
+      <p>Engineering AI agents as products, from multi-agent orchestration and streaming agent interfaces to real-time voice agents, and building them end to end across web and mobile with coding agents such as Claude Code and Codex.</p>
+    </section>
+
+    <!-- Work Experience (reverse chronological) -->
+    <section class="section">
+      <h2 class="section__title">Work Experience</h2>
+      <table class="entries">
+        <tbody>
+          <tr>
+            <td class="entries__date">Jan 2026 - Present</td>
+            <td>
+              <div class="entries__org">WIGTN</div>
+              <div class="entries__role">AI Product Engineer, AI Research &amp; Engineering Company</div>
+              <div class="entries__desc">
+                <ul>
+                  <li>Running an ongoing PoC with a professional esports team (since Sep 2026): a frame-level video analysis system that classifies why a fighting-game player was hit, built on public 60 fps match footage. Wrote the proposal and roadmap and prototyped hit detection and health bar tracking.</li>
+                  <li>Built the Web Agency sales demo, a career platform with community, company reviews, job postings, and an operations back office, wiring 20 mock-up screens into a working product and vendoring the team's core modules so it builds statically without private registry tokens.</li>
+                  <li>Connected the admin action flow so that only actions passing permission check, step-up re-authentication, and an idempotency key in order reach state and the audit log, with guest, member, and operator role switching to make the three permission gates observable.</li>
+                  <li>Fixed screens breaking on local storage schema changes with row-level merging and a schema version stamp.</li>
+                  <li>Contributed to WIGTN Plugins, the open-source Claude Code plugin: wrote the initial frontend-development plugin (frontend-developer agent, Next.js App Router, React, Tailwind, and testing skills, and an /add-feature command) and overhauled the /screen-spec skill with a grayscale wireframe, a mobile wireframe template, and --interview and --platform options. <a href="/cv/projects/wigtn-coding/" class="pub__link">View details</a></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="entries__date">Feb 2025 - Jun 2026</td>
+            <td>
+              <div class="entries__org">Soundmind</div>
+              <div class="entries__role">Manager, MX Team</div>
+              <div class="entries__desc">
+                <ul>
+                  <li>Built and operated B2B child safety services, a location-tracking app (Odiya) and a parental control app (Mohani), and their unified auth system across React Native apps, admin web, and backend.</li>
+                  <li>Relieved processing bottlenecks and DB load on a location stream of 3,000 to 5,000 records per minute with Redis caching, batch processing, and DB partitioning and indexing. <a href="/cv/career/odiya/" class="pub__link">View details</a></li>
+                  <li>Reduced battery use in the location-tracking app by enabling high-accuracy tracking only during actual movement, using the Activity Recognition API and Android sensors.</li>
+                  <li>Built a React Native guardian app to replace the web-based guardian system and an admin dashboard for monitoring user status and location data, contributing to about 230% revenue growth in the B2B business. <a href="/cv/career/odiya/" class="pub__link">View details</a></li>
+                  <li>Designed FCM-based real-time device control for the parental control app and fixed missed events across Android foreground and background states with state resynchronization and fallback handling. <a href="/cv/career/mohani/" class="pub__link">View details</a></li>
+                  <li>Built parental controls including app usage limits, sleep mode, and content blocking, with Redis-based state caching and per-app usage statistics.</li>
+                  <li>Designed and built a unified auth system across services with role-based policies for guardian and dependent accounts, auth-server load control, blue-green deployment, and integrated metrics and log monitoring. <a href="/cv/career/soundmind-auth/" class="pub__link">View details</a></li>
+                  <li>Built a Korean speaking assessment platform for a KOCCA government R&amp;D project, used concurrently by 120 evaluators and 20 graders at Yonsei University, with a staged assessment workflow that prevents state conflicts and duplicate grading, draft saving and state recovery, S3 storage with Wavesurfer.js streaming waveforms, STT-based processing, and rubric-based result analysis. <a href="/cv/career/kocca-korean-speaking/" class="pub__link">View details</a></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Hackathons -->
+    <section class="section">
+      <h2 class="section__title">Hackathons</h2>
+      <article class="proj">
+        <p class="proj__meta">H0: Hack the Zero Stack · Vercel &times; AWS</p>
+        <p class="proj__title">OpenSlot: Zero-Oversell Ticketing Infrastructure</p>
+        <p class="proj__desc">
+          B2B ticket on-sale infrastructure that keeps the seat ledger on multi-region Amazon Aurora DSQL and
+          discovery on Aurora PostgreSQL with PostGIS and pgvector, guaranteeing zero oversells when buyers
+          in every region hit the same seats at once. Built the Aurora PostgreSQL discovery plane, restyled the
+          buyer flow to the poster design system, and ran the design QA and E2E pass. Next.js on Vercel.
+        </p>
+        <div class="pub__links">
+          <a href="https://github.com/wigtn/aws-hackathon-dsql" class="pub__link">GitHub</a>
+          <a href="https://devpost.com/software/openslot" class="pub__link">Devpost</a>
+          <a href="https://youtu.be/o9iaDAvBSZY" class="pub__link">Video</a>
+        </div>
+      </article>
+      <article class="proj">
+        <p class="proj__meta">Google Cloud Rapid Agent Hackathon</p>
+        <p class="proj__title">Custos: Always-On AI Code Review Bot for GitLab</p>
+        <p class="proj__desc">
+          Self-evolving GitLab code review agent in which an ADK triage orchestrator reviews merge requests,
+          sweeps merged code on a schedule, and learns new review skills from real incidents. Built the rule-based
+          checkers for the security, performance, test quality, and team lead reviewer personas with conflict
+          synthesis across findings, and the merge request opt-out rules (draft title, skip label, magic comment).
+        </p>
+        <div class="pub__links">
+          <a href="https://gitlab.com/wigtn1/wigtn-gitlab-custos" class="pub__link">GitLab</a>
+          <a href="https://devpost.com/software/wigtn-bot" class="pub__link">Devpost</a>
+          <a href="https://youtu.be/UOhzd3VeB84" class="pub__link">Video</a>
+        </div>
+      </article>
+      <article class="proj">
+        <p class="proj__meta">Snowflake AI &amp; Data Hackathon 2026 Korea · 2nd Place, Tech Track</p>
+        <p class="proj__title">WIGTN FLAKE: Purpose-Driven Neighborhood Intelligence Platform</p>
+        <p class="proj__desc">
+          Location recommendation platform in which an orchestrator assigns purpose-specific expert agents
+          to cross-analyze real estate, foot traffic, card spending, and telecom data on Snowflake Cortex.
+          Built the Cortex analysis pipeline, six-axis region profiling with a three-region comparison mode,
+          and stream-mock Playwright E2E tests for the SSE screens.
+        </p>
+        <div class="pub__links">
+          <a href="https://youtu.be/1YzSp3SdzTk" class="pub__link">Video</a>
+          <a href="https://www.newswire.co.kr/newsRead.php?no=1033575" class="pub__link">News</a>
+        </div>
+      </article>
+      <article class="proj">
+        <p class="proj__meta">Build with TRAE Seoul · ByteDance · Grand Prize</p>
+        <p class="proj__title">WIGENT: Multi-Agent Debate Platform for Business Ideas</p>
+        <p class="proj__desc">
+          Multi-agent debate platform in which an orchestrator spawns and retires expert agents around a PM
+          agent and turns the conclusion into a landing page. Built the orchestrator and SSE API, integrated
+          the three parallel tracks, and added Next.js code export.
+        </p>
+        <div class="pub__links">
+          <a href="https://github.com/wigtn/wigent" class="pub__link">GitHub</a>
+        </div>
+      </article>
+      <article class="proj">
+        <p class="proj__meta">Gemini Live Agent Challenge · Google</p>
+        <p class="proj__title">TimeLens: Multimodal AI Museum Curator</p>
+        <p class="proj__desc">
+          Multimodal AI curator on the Gemini Live API that recognizes artifacts through the camera, explains
+          them by voice in real time, and generates restoration images. Fixed gaps in TTS playback by switching
+          the audio pipeline to proactive scheduling. Gemini Live API, Google ADK, Firebase, Cloud Run.
+        </p>
+        <div class="pub__links">
+          <a href="https://github.com/wigtn/wigtn-timelens" class="pub__link">GitHub</a>
+          <a href="https://devpost.com/software/wigtn-agent" class="pub__link">Devpost</a>
+          <a href="https://youtu.be/ITaMtVO5jFg" class="pub__link">Video</a>
+        </div>
+      </article>
+      <article class="proj">
+        <p class="proj__meta">Cursor Seoul Hackathon 2026 · Round 1</p>
+        <p class="proj__title">WIGVO: AI Voice Assistant for Phone-Only Services</p>
+        <p class="proj__desc">
+          Voice assistant that collects a request through chat, turns it into a dynamic call prompt, and makes
+          the phone call on the user's behalf to shops that only take reservations by phone. Built the chat
+          front end, login flow, and conversation state management in a four-person, four-hour build.
+          Next.js 16, OpenAI, ElevenLabs Conversational AI, Twilio, Supabase.
+        </p>
+        <div class="pub__links">
+          <a href="https://github.com/wigtn/wigtn-call-agent" class="pub__link">GitHub</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Publications -->
+    <section class="section">
+      <h2 class="section__title">Publications</h2>
+      <article class="pub">
+        <p class="pub__authors">Sang-Woo Son, Hyeong-seob Kim<sup aria-label="corresponding author">*</sup>, Hyeonsang Kim, <strong>Hyun-woo Cho</strong>, Jinmo Kim</p>
+        <p class="pub__title">Retrieval-Conditional Parsing Score (RCPS): Choosing Document Parsers by Retrieval, Not by Appearance</p>
+        <p class="pub__venue">Accepted to EMNLP 2026 Industry Track.</p>
+        <p class="pub__note">* Corresponding author</p>
+      </article>
+      <article class="pub">
+        <p class="pub__authors">Hyeong-seob Kim, Sang-Woo Son, <strong>Hyun-woo Cho</strong>, Hyeonsang Kim, Jinmo Kim</p>
+        <p class="pub__title">WIGVO: Real-Time Bidirectional Speech Translation over Legacy PSTN Calls via Dual-Session Echo Gating</p>
+        <p class="pub__venue">In Proceedings of ACL 2026 System Demonstrations.</p>
+        <div class="pub__links">
+          <a href="https://aclanthology.org/2026.acl-demo.33/" class="pub__link">Paper</a>
+          <a href="https://youtu.be/jK1CDOQExLw" class="pub__link">Video</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Education -->
+    <section class="section section--keep">
+      <h2 class="section__title">Education</h2>
+      <table class="entries">
+        <tbody>
+          <tr>
+            <td class="entries__date">Mar 2016 - Feb 2022</td>
+            <td>
+              <div class="entries__org">Kwangwoon University</div>
+              <div class="entries__role">Bachelor's degree in Computer, Information and Communications Engineering, GPA 3.77 / 4.5</div>
+              <div class="entries__desc">
+                <ul>
+                  <li>Graduation research: a deep learning model that estimates blood pressure from BCG, ECG, and PPG signals for health indicator monitoring.</li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Honors & Awards -->
+    <section class="section section--keep">
+      <h2 class="section__title">Honors &amp; Awards</h2>
+      <table class="entries">
+        <tbody>
+          <tr>
+            <td class="entries__date">Apr 2026</td>
+            <td>
+              <div class="entries__org">2nd Place, Tech Track, Snowflake AI &amp; Data Hackathon 2026 Korea</div>
+              <div class="entries__role">Team WIGTN, WIGTN FLAKE</div>
+            </td>
+          </tr>
+          <tr>
+            <td class="entries__date">Mar 2026</td>
+            <td>
+              <div class="entries__org">Grand Prize, Build with TRAE Seoul, ByteDance</div>
+              <div class="entries__role">Team WIGTN, WIGENT</div>
+            </td>
+          </tr>
+          <tr>
+            <td class="entries__date">2019</td>
+            <td>
+              <div class="entries__org">Dean's List</div>
+              <div class="entries__role">School of Computer and Information Engineering, Kwangwoon University</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
