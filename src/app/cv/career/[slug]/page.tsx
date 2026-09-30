@@ -5,7 +5,9 @@ import { soundmindCareer } from "@/data/soundmind";
 
 type Params = { slug: string };
 
-const allCareerProjects = soundmindCareer.groups.flatMap((g) => g.projects);
+const allCareerProjects = soundmindCareer.groups.flatMap((g) =>
+  g.projects.map((p) => ({ ...p, category: g.category })),
+);
 
 export function generateStaticParams(): Params[] {
   return allCareerProjects.map((p) => ({ slug: p.slug }));
@@ -42,6 +44,11 @@ export default async function CareerProjectPage({
   const project = allCareerProjects.find((p) => p.slug === slug);
   if (!project) notFound();
   return (
-    <CvCareerDetail project={project} company={soundmindCareer.company} />
+    <CvCareerDetail
+      project={project}
+      company={soundmindCareer.company}
+      role={soundmindCareer.role}
+      category={project.category}
+    />
   );
 }

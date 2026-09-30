@@ -1,9 +1,10 @@
 "use client";
 
-import { ArrowLeft, X } from "lucide-react";
+import { ArrowLeft, Award, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { SoundmindProject } from "@/data/soundmind";
+import { Tag } from "./Tag";
 
 function renderEmphasis(text: string) {
   const parts = text.split(/\*\*(.+?)\*\*/g);
@@ -21,9 +22,13 @@ function renderEmphasis(text: string) {
 export function CvCareerDetail({
   project,
   company,
+  role,
+  category,
 }: {
   project: SoundmindProject;
   company: string;
+  role: string;
+  category: string;
 }) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("overview");
@@ -35,6 +40,8 @@ export function CvCareerDetail({
     if (project.myRole) list.push({ id: "my-role", label: "My Role" });
     if (project.highlights.length > 0)
       list.push({ id: "highlights", label: "Highlights" });
+    if (project.stack && project.stack.length > 0)
+      list.push({ id: "stack", label: "Stack" });
     if (project.caseStudies && project.caseStudies.length > 0)
       list.push({ id: "case-study", label: "Case Study" });
     return list;
@@ -115,6 +122,19 @@ export function CvCareerDetail({
           <span>{project.period}</span>
           <span aria-hidden>·</span>
           <span>{company}</span>
+          <span aria-hidden>·</span>
+          <span>{role}</span>
+        </div>
+        <div className="mt-4 flex flex-wrap gap-1.5">
+          {project.badge ? (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--color-ink)] px-2.5 py-1 text-xs font-medium text-white">
+              <Award size={12} />
+              {project.badge}
+            </span>
+          ) : null}
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-line)] bg-white px-2.5 py-1 text-xs font-medium text-[var(--color-ink-muted)]">
+            {category}
+          </span>
         </div>
       </header>
 
@@ -156,6 +176,19 @@ export function CvCareerDetail({
                   </li>
                 ))}
               </ul>
+            </section>
+          ) : null}
+
+          {project.stack && project.stack.length > 0 ? (
+            <section id="stack" className="scroll-mt-24">
+              <h2 className="mb-4 text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-ink-subtle)]">
+                Stack
+              </h2>
+              <div className="flex flex-wrap gap-1.5">
+                {project.stack.map((s) => (
+                  <Tag key={s}>{s}</Tag>
+                ))}
+              </div>
             </section>
           ) : null}
 
